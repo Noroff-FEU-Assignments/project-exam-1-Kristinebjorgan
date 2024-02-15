@@ -1,6 +1,6 @@
 // About content
 export function fetchAboutPageContent() {
-  const apiUrl = `http://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
+  const apiUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
 
   return fetch(apiUrl)
     .then((response) => {
@@ -116,7 +116,7 @@ export function clickableLinks(email, instagram, donations, linksContainer) {
 // truncated index version
 
 export function fetchTruncatedAboutContent() {
-  const truncatedApiUrl = `http://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
+  const truncatedApiUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
   return fetch(truncatedApiUrl)
     .then((response) => {
       if (!response.ok) {
