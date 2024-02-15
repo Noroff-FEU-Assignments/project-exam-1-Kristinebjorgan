@@ -302,6 +302,7 @@ h3 {
   justify-content: center;
   text-align: center;
   background-color: #faebe5;
+  font-weight: 150;
 }
 
 .carousel h2 {
@@ -428,11 +429,23 @@ h3 {
 .index-about-content h1 {
   letter-spacing: 7px;
   font-size: 50px;
-}
-
-.index-about-content h1 {
+  text-transform: uppercase;
+  font-weight: 150;
   height: 100%;
   width: 100%;
+}
+
+.index-about-content h2 {
+  font-weight: 150;
+}
+
+.index-about-content img {
+  border-radius: 10px;
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* contact index */
