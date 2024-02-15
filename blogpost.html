@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Kristine Bjørgan Østby" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tales of Palestine</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script type="module" src="./js/index.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="main-head">
+      <div>
+        <h1 class="maintitle">حكايات من فلسطين</h1>
+        <h2 class="subtitle">Tales of Palestine</h2>
+        <div class="header-img"></div>
+      </div>
+    </header>
+    <header class="subhead">
+      <h1 class="title">حكايات من فلسطين</h1>
+      <nav class="subhead-nav">
+        <a class="sub-navlink" href="index.html" aria-label="Home">Home</a>
+        <a class="sub-navlink" href="blogposts.html" aria-label="Blog">Blog</a>
+        <a class="sub-navlink" href="about.html" aria-label="Visit us">About</a>
+        <a class="sub-navlink" href="contact.html" aria-label="Get Involved"
+          >Contact</a
+        >
+      </nav>
+      <div class="search">
+        <form action="/search" method="get">
+          <input type="text" placeholder="SEARCH HERE" name="search" />
+        </form>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+
+    <div id="blogpost-container"></div>
+    <button id="back">Back</button>
+    <div class="loader">
+      <div class="spinner">Loading</div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+      <p>Copyright © 2023 - All rights reserved</p>
+    </footer>
+  </body>
+</html>
