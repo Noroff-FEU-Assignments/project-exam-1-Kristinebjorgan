@@ -44,21 +44,25 @@ export function closeModal() {
 
 // Initialize modal functionality
 export function initModal() {
-  const modal = document.getElementById("modal");
-  const closeBtn = document.querySelector(".modal .close");
+  setTimeout(() => {
+    const modal = document.getElementById("modal");
+    const closeBtn = document.querySelector(".modal .close");
 
-  // Close when the close button is clicked
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeModal);
-    modal.style.display = "none";
-  } else {
-    console.error("The close button was not found.");
-  }
-
-  // Close when clicked outside the modal content
-  window.addEventListener("click", (event) => {
-    if (event.target == modal) {
-      closeModal();
+    // Close when the close button is clicked
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+      modal.style.display = "none";
+    } else {
+      console.error("The close button was not found.");
     }
-  });
+
+    // Close when clicked outside the modal content
+    if (modal) {
+      window.addEventListener("click", (event) => {
+        if (event.target == modal) {
+          closeModal();
+        }
+      });
+    }
+  }, 0); // A timeout of 0 ms will still push the function to the end of the call stack.
 }
