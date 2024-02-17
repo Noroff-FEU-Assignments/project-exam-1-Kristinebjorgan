@@ -17,15 +17,16 @@ export function toggleHeaderOnScroll() {
 
 // Current nav link
 export function currentNavLink() {
-  const currentPageUrl = window.location.pathname.split('/').pop();
-  const navLinks = document.querySelectorAll('.sub-navlink');
+  const currentPageUrl = window.location.pathname.split("/").pop();
+  const navLinks = document.querySelectorAll(".sub-navlink");
 
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPageUrl) {
-      link.classList.add('active'); 
+  navLinks.forEach((link) => {
+    console.log(link.getAttribute("href"), currentPageUrl);
+
+    if (link.getAttribute("href") === currentPageUrl) {
+      link.classList.add("active");
     } else {
-      link.classList.remove('active'); 
+      link.classList.remove("active");
     }
   });
 }
-
