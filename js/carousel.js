@@ -1,4 +1,4 @@
-import { truncateText, blogPostIdFromUrl } from "./utilities.js";
+import { truncateText } from "./utilities.js";
 
 let currentPage = 1;
 
@@ -59,7 +59,7 @@ export function populateCarousel(perPage = 4, carouselId = "blogCarousel") {
       }%)`;
     })
     .catch((error) => {
-      console.error("Error fetching carousel posts:", error);
+      console.error("Error fetching carousel posts:", error.message, error);
     });
 }
 
