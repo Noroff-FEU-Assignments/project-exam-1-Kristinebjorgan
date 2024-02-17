@@ -23,9 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleHeaderOnScroll();
   currentNavLink();
   clickableLinks();
-  initModal();
   setupNewsletterForm();
   categoryFilters();
+
+  //if modal
+   const modal = document.getElementById("modal");
+   if (modal) {
+     initModal();
+   }
 
   // Fetch and display full about content for the about page, if the container exists
   const aboutContentContainer = document.getElementById("about-content");
