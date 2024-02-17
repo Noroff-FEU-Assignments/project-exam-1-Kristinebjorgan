@@ -2,10 +2,21 @@
 export function openModal(post) {
   console.log("Opening modal for post:", post); // Debugging statement
   const modal = document.getElementById("modal");
+  let modalImgLink = document.getElementById("modalImgLink");
   const modalImg = document.getElementById("modalImg");
   const modalText = document.getElementById("modalText");
   const modalTitle = document.getElementById("modalTitle");
   const modalAuthor = document.getElementById("modalAuthor");
+
+  if (!modalImgLink) {
+    modalImgLink = document.createElement("a");
+    modalImgLink.id = "modalImgLink";
+    modalImg.parentNode.insertBefore(modalImgLink, modalImg);
+    modalImgLink.appendChild(modalImg);
+  }
+
+  // link to the specific blog post
+  modalImgLink.href = `./blogpost.html?postId=${post.id}`;
 
   // Check if the modal and its elements exist
   if (modal && modalImg && modalText && modalTitle && modalAuthor) {

@@ -3,6 +3,7 @@ import {
   fetchBlogs,
   activeViewMoreButton,
   populateBlogPost,
+  categoryFilters,
 } from "./blogposts.js";
 import { toggleHeaderOnScroll, currentNavLink } from "./navigation.js";
 import { validateForm } from "./contact.js";
@@ -15,7 +16,7 @@ import {
 } from "./about.js";
 import { initModal } from "./modal.js";
 import { populateCarousel, carouselNavigation } from "./carousel.js";
-import { validateEmail } from "./utilities.js";
+import { validateEmail, blogPostIdFromUrl } from "./utilities.js";
 import { setupNewsletterForm } from "./newsletter.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   clickableLinks();
   initModal();
   setupNewsletterForm();
+  categoryFilters();
 
   // Fetch and display full about content for the about page, if the container exists
   const aboutContentContainer = document.getElementById("about-content");
@@ -37,6 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("Failed to fetch full about content:", error);
       });
+  }
+
+  // Initialize category filters if on a page with blog content
+  if (
+    document.getElementById("blog-content") &&
+    document.querySelectorAll(".filter-button").length > 0
+  ) {
+    categoryFilters();
   }
 
   // Fetch and display truncated about content for the index page, if the container exists
@@ -90,8 +100,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (document.getElementById("blogpost-container")) {
-    populateBlogPost(); // This should execute when on blogpost.html
+    populateBlogPost();
   }
+});
+
+//hamburger menu toggle
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".subhead-nav");
+
+  hamburger.addEventListener("click", function () {
+    nav.classList.toggle("open");
+  });
 });
 
 // Function to handle going back

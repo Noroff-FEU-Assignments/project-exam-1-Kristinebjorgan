@@ -12,12 +12,16 @@ let isExpanded = false;
 let offset = 0;
 
 //FUNCTIONS
-
 // fetch blogposts
-export function fetchBlogs(perPage = 9, offset = 0) {
-  console.log("fetchBlogs called");
+export function fetchBlogs(perPage = 9, offset = 0, categoryId = "") {
   return new Promise((resolve, reject) => {
-    const fetchUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/posts?per_page=${perPage}&offset=${offset}`;
+    let fetchUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/posts?per_page=${perPage}&offset=${offset}`;
+
+    // Check if a categoryId is provided and append it to the fetchUrl
+    if (categoryId) {
+      fetchUrl += `&categories=${categoryId.trim()}`;
+    }
+
     fetch(fetchUrl)
       .then((response) => {
         console.log("Response received", response);
@@ -123,7 +127,42 @@ export function fetchBlogs(perPage = 9, offset = 0) {
   });
 }
 
-// VIEW MORE / VIEW LESS
+//filter categories
+export function categoryFilters() {
+  const filterButtons = document.querySelectorAll(".filter-button");
+  const clearButton = document.querySelector(".clear-filters");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default action
+
+      // Remove active class from all buttons
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+      // Add active class to the clicked button
+      this.classList.add("active");
+
+      // Fetch the blogs based on the category
+      const categoryId = this.getAttribute("data-category-id");
+      document.getElementById("blog-content").innerHTML = ""; // Clear existing posts
+      fetchBlogs(9, 0, categoryId);
+    });
+  });
+  if (clearButton) {
+    clearButton.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      // Remove active class from all filter buttons
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+      // Fetch all blogs without any category filter
+      document.getElementById("blog-content").innerHTML = ""; // Clear existing posts
+      fetchBlogs(9, 0, ""); //
+    });
+  }
+}
+
+// view more / view less
 export function activeViewMoreButton() {
   const viewMoreButton = document.getElementById("view-more");
   if (viewMoreButton) {

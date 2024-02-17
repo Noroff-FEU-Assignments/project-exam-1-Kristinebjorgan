@@ -44,7 +44,10 @@
   <body>
     <!-- HEADER -->
     <header class="subhead">
-      <h1 class="title">حكايات من فلسطين</h1>
+      <div class="hamburger">☰</div>
+      <a href="index.html" class="title-link">
+        <h1 class="title">حكايات من فلسطين</h1>
+      </a>
       <nav class="subhead-nav">
         <a class="sub-navlink" href="index.html" aria-label="Home">Home</a>
         <a class="sub-navlink" href="blogposts.html" aria-label="Blog">Blog</a>
@@ -61,7 +64,16 @@
     </header>
 
     <!-- MAIN -->
+    <!-- filter categories-->
+    <div class="blog-filters">
+      <button class="filter-button" data-category-id="19">Essay</button>
+      <button class="filter-button" data-category-id="16">Commentary</button>
+      <button class="filter-button" data-category-id="18">Poetry</button>
+      <button class="filter-button" data-category-id="17">Prose</button>
+      <button class="clear-filters">x</button>
+    </div>
 
+    <!-- content -->
     <div id="blog-content"></div>
     <button id="view-more">Load More</button>
     <button id="back">Back</button>
