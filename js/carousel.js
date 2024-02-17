@@ -3,8 +3,13 @@ import { truncateText, blogPostIdFromUrl } from "./utilities.js";
 let currentPage = 1;
 
 export function populateCarousel(perPage = 4, carouselId = "blogCarousel") {
+  if (!Number.isInteger(currentPage) || currentPage < 1) {
+    console.error("currentPage must be a positive integer.");
+    return; // Exit the function if currentPage is not valid
+  }
   const fetchUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/posts?per_page=${perPage}&page=${currentPage}`;
 
+  console.log("Fetching carousel data from:", fetchUrl);
   fetch(fetchUrl)
     .then((response) => {
       if (!response.ok) {
