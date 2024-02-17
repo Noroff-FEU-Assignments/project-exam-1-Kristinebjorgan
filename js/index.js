@@ -117,3 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("The elements for the hamburger menu toggle were not found.");
   }
 });
+
+// Function to handle going back
+function goBack() {
+  window.history.back();
+}
