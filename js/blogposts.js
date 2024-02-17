@@ -284,9 +284,12 @@ function appendElement(
 }
 
 function appendImage(container, className, src, alt) {
-  const image = document.createElement("img");
-  image.className = className;
-  image.src = src;
-  image.alt = alt;
-  container.appendChild(image);
+  if (src) {
+    // Only proceed if 'src' is truthy
+    const image = document.createElement("img");
+    image.className = className;
+    image.src = src;
+    image.alt = alt;
+    container.appendChild(image);
+  }
 }
