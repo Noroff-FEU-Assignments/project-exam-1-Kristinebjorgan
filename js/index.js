@@ -109,12 +109,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector(".subhead-nav");
 
-  if (hamburger && nav) {
+  // Only add the event listener if both elements are present
+  if (document.body.contains(hamburger) && document.body.contains(nav)) {
     hamburger.addEventListener("click", function () {
       nav.classList.toggle("open");
     });
   } else {
-    console.error("The elements for the hamburger menu toggle were not found.");
+    console.info(
+      "Hamburger menu or navigation elements are not present on this page."
+    );
   }
 });
 
