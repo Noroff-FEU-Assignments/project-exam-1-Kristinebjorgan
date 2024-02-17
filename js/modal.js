@@ -2,21 +2,21 @@
 export function openModal(post) {
   console.log("Opening modal for post:", post); // Debugging statement
   const modal = document.getElementById("modal");
-  let modalImgLink = document.getElementById("modalImgLink");
+  let modalImgLink = document.getElementById("modalImgLink"); 
   const modalImg = document.getElementById("modalImg");
   const modalText = document.getElementById("modalText");
   const modalTitle = document.getElementById("modalTitle");
   const modalAuthor = document.getElementById("modalAuthor");
 
-  if (!modalImgLink) {
-    modalImgLink = document.createElement("a");
-    modalImgLink.id = "modalImgLink";
-    modalImg.parentNode.insertBefore(modalImgLink, modalImg);
-    modalImgLink.appendChild(modalImg);
-  }
+      if (!modalImgLink) {
+        modalImgLink = document.createElement("a");
+        modalImgLink.id = "modalImgLink";
+        modalImg.parentNode.insertBefore(modalImgLink, modalImg); 
+        modalImgLink.appendChild(modalImg); 
+      }
 
-  // link to the specific blog post
-  modalImgLink.href = `./blogpost.html?postId=${post.id}`;
+      // link to the specific blog post
+      modalImgLink.href = `./blogpost.html?postId=${post.id}`;
 
   // Check if the modal and its elements exist
   if (modal && modalImg && modalText && modalTitle && modalAuthor) {
@@ -44,25 +44,21 @@ export function closeModal() {
 
 // Initialize modal functionality
 export function initModal() {
-  setTimeout(() => {
-    const modal = document.getElementById("modal");
-    const closeBtn = document.querySelector(".modal .close");
+  const modal = document.getElementById("modal");
+  const closeBtn = document.querySelector(".modal .close");
 
-    // Close when the close button is clicked
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeModal);
-      modal.style.display = "none";
-    } else {
-      console.error("The close button was not found.");
-    }
+  // Close when the close button is clicked
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+    modal.style.display = "none";
+  } else {
+    console.error("The close button was not found.");
+  }
 
-    // Close when clicked outside the modal content
-    if (modal) {
-      window.addEventListener("click", (event) => {
-        if (event.target == modal) {
-          closeModal();
-        }
-      });
+  // Close when clicked outside the modal content
+  window.addEventListener("click", (event) => {
+    if (event.target == modal) {
+      closeModal();
     }
-  }, 0); // A timeout of 0 ms will still push the function to the end of the call stack.
+  });
 }

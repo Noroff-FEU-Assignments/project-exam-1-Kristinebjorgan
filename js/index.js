@@ -16,8 +16,11 @@ import {
 } from "./about.js";
 import { initModal } from "./modal.js";
 import { populateCarousel, carouselNavigation } from "./carousel.js";
-import { validateEmail, blogPostIdFromUrl } from "./utilities.js";
-import { setupNewsletterForm } from "./newsletter.js";
+import {
+  validateEmail,
+  blogPostIdFromUrl,
+  setupNewsletterForm,
+} from "./utilities.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   toggleHeaderOnScroll();

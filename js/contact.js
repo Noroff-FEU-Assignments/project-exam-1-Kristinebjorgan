@@ -1,14 +1,14 @@
-import { validateEmail } from "./utilities.js";
+import { validateEmail, sanitizeHTML } from "./utilities.js";
 
 // Function to validate the form on submission
 export function validateForm(event) {
-  event.preventDefault(); // Stop the form from submitting
+  event.preventDefault();
 
   // Get form input values
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const subject = document.getElementById("subject").value;
-  const message = document.getElementById("message").value;
+  const name = sanitizeHTML(document.getElementById("name").value);
+  const email = sanitizeHTML(document.getElementById("email").value);
+  const subject = sanitizeHTML(document.getElementById("subject").value);
+  const message = sanitizeHTML(document.getElementById("message").value);
 
   // Reset error messages
   const errorElements = document.querySelectorAll(".error");
@@ -16,7 +16,7 @@ export function validateForm(event) {
     element.textContent = "";
   });
 
-  // Start validation
+  //validation
   let isValid = true;
 
   // Name validation

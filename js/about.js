@@ -1,8 +1,9 @@
+//imports
+import { apiAboutUrl, sanitizeHTML, sanitizeURL } from "./utilities.js";
+
 // About content
 export function fetchAboutPageContent() {
-  const apiUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
-
-  return fetch(apiUrl)
+  return fetch(apiAboutUrl)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -10,7 +11,6 @@ export function fetchAboutPageContent() {
       return response.json();
     })
     .then((data) => {
-      console.log("Fetched About page data:", data);
       return data;
     })
     .catch((error) => {
@@ -21,7 +21,8 @@ export function fetchAboutPageContent() {
     });
 }
 
-// Displays content and clickable links
+// Displays page content
+
 export function displayAboutPageContent(data) {
   const aboutContentElement = document.querySelector(".about-content");
   const linksContainer = document.querySelector(".links-container");
@@ -29,19 +30,21 @@ export function displayAboutPageContent(data) {
     // Check if both containers exist
     let aboutContentHTML = "";
     if (data.content && data.content.rendered) {
-      aboutContentHTML = data.content.rendered;
-    } else if (data.acf) {
+      aboutContentHTML += sanitizeHTML(data.content.rendered);
+    }
+    if (data.acf) {
       // ACF fields
       if (data.acf.title) {
-        aboutContentHTML += `<h1>${data.acf.title}</h1>`;
+        aboutContentHTML += `<h1>${sanitizeHTML(data.acf.title)}</h1>`;
       }
       if (data.acf.subtitle) {
         aboutContentHTML += `<h2>${data.acf.subtitle}</h2>`;
       }
-      if (data.acf.about_image && data.acf.about_image.url) {
-        aboutContentHTML += `<img src="${
-          data.acf.about_image.sizes.medium
-        }" alt="${data.acf.about_image.alt || "About Image"}" />`;
+      if (data.acf && data.acf.about_image && data.acf.about_image.url) {
+        const safeURL = sanitizeURL(data.acf.about_image.sizes.medium);
+        aboutContentHTML += `<img src="${safeURL}" alt="${sanitizeHTML(
+          data.acf.about_image.alt || "About Image"
+        )}" />`;
       }
       if (data.acf.mission) {
         aboutContentHTML += `<p>${data.acf.mission}</p>`;
@@ -86,7 +89,6 @@ export function displayAboutPageContent(data) {
 
 // clickable links in about
 export function clickableLinks(email, instagram, donations, linksContainer) {
-  // Email, instagram, donations
   if (email) {
     const emailLink = document.createElement("a");
     emailLink.href = `mailto:${email}`;
@@ -97,7 +99,7 @@ export function clickableLinks(email, instagram, donations, linksContainer) {
 
   if (instagram) {
     const instagramLink = document.createElement("a");
-    instagramLink.href = instagram;
+    instagramLink.href = sanitizeURL(instagram);
     instagramLink.textContent = "Instagram";
     instagramLink.target = "_blank";
     linksContainer.appendChild(instagramLink);
@@ -106,7 +108,7 @@ export function clickableLinks(email, instagram, donations, linksContainer) {
 
   if (donations) {
     const donationsLink = document.createElement("a");
-    donationsLink.href = donations;
+    donationsLink.href = sanitizeURL(donations);
     donationsLink.textContent = "Donations";
     donationsLink.target = "_blank";
     linksContainer.appendChild(donationsLink);
@@ -114,7 +116,6 @@ export function clickableLinks(email, instagram, donations, linksContainer) {
 }
 
 // truncated index version
-
 export function fetchTruncatedAboutContent() {
   const truncatedApiUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
   return fetch(truncatedApiUrl)
@@ -135,7 +136,6 @@ export function displayTruncatedAboutContent(data) {
     throw new Error("index-about-content not found.");
   }
 
-  console.log("Data received for truncation:", data);
   const maxLength = 200;
   let content = "";
 
@@ -152,24 +152,24 @@ export function displayTruncatedAboutContent(data) {
 
   // Title
   if (data.acf.title) {
-    aboutContentHTML += `<h1>${data.acf.title}</h1>`;
+    aboutContentHTML += `<h1>${sanitizeHTML(data.acf.title)}</h1>`;
   }
 
   // Subtitle
   if (data.acf.subtitle) {
-    aboutContentHTML += `<h2>${data.acf.subtitle}</h2>`;
+    aboutContentHTML += `<h2>${sanitizeHTML(data.acf.subtitle)}</h2>`;
   }
 
   // About Image
   if (data.acf.about_image && data.acf.about_image.url) {
-    aboutContentHTML += `<img src="${data.acf.about_image.sizes.medium}" alt="${
-      data.acf.about_image.alt || "About Image"
-    }" />`;
+    aboutContentHTML += `<img src="${sanitizeURL(
+      data.acf.about_image.sizes.medium
+    )}" alt="${data.acf.about_image.alt || "About Image"}" />`;
   }
 
   // Mission
   if (data.acf.mission) {
-    aboutContentHTML += `<p>${data.acf.mission}</p>`;
+    aboutContentHTML += `<p>${sanitizeHTML(data.acf.mission)}</p>`;
   }
 
   // Truncate the content
