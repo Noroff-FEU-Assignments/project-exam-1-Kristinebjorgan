@@ -14,7 +14,6 @@ export function populateCarousel(perPage = 4, carouselId = "blogCarousel") {
     .then((response) => {
       if (!response.ok) {
         if (response.status === 404) {
-          currentPage -= 1;
           throw new Error("No more posts to load");
         }
         throw new Error("Network response was not ok");
