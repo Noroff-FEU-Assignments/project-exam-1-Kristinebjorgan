@@ -22,8 +22,15 @@ export function currentNavLink() {
 
   navLinks.forEach((link) => {
     const linkUrl = link.getAttribute("href");
+    // Normalize URLs by removing trailing slashes
+    const normalizedCurrentPageUrl = currentPageUrl.endsWith("/")
+      ? currentPageUrl.slice(0, -1)
+      : currentPageUrl;
+    const normalizedLinkUrl = linkUrl.endsWith("/")
+      ? linkUrl.slice(0, -1)
+      : linkUrl;
     // Check if the current page URL contains the link URL
-    if (currentPageUrl.includes(linkUrl)) {
+    if (normalizedCurrentPageUrl.includes(normalizedLinkUrl)) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
