@@ -15,14 +15,15 @@ export function toggleHeaderOnScroll() {
   });
 }
 
-// Current nav link
+//active navlinks
 export function currentNavLink() {
-  const currentPageUrl = window.location.pathname.split("/").pop();
+  let currentPageUrl = window.location.pathname; // Get the full pathname
   const navLinks = document.querySelectorAll(".sub-navlink");
 
   navLinks.forEach((link) => {
-
-    if (link.getAttribute("href") === currentPageUrl) {
+    const linkUrl = link.getAttribute("href");
+    // Check if the current page URL contains the link URL
+    if (currentPageUrl.includes(linkUrl)) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
