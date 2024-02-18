@@ -1,7 +1,8 @@
 // Imports
 import { truncateText, apiBaseUrl } from "./utilities.js";
 
-let currentPage = 1;
+export let currentPage = 1;
+export const perPage = 4;
 
 // Carousel
 export function populateCarousel(

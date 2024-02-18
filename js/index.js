@@ -8,7 +8,7 @@ import {
 import { toggleHeaderOnScroll, currentNavLink } from "./navigation.js";
 import { validateForm } from "./contact.js";
 import { initModal } from "./modal.js";
-import { populateCarousel, carouselNavigation } from "./carousel.js";
+import { populateCarousel, carouselNavigation, perPage, currentPage } from "./carousel.js";
 import {
   fetchBlogs,
   activeViewMoreButton,
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Populate the carousel
   if (document.getElementById("blogCarousel")) {
-    populateCarousel();
+    populateCarousel(perPage, currentPage, "blogCarousel");
     carouselNavigation();
   }
 
