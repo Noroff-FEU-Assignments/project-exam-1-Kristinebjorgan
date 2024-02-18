@@ -172,12 +172,12 @@ nav {
   margin-bottom: 5%;
 }
 
-.title .subhead-nav,
+.sub-title .subhead-nav,
 .search {
   flex: 1;
 }
 
-.title {
+.sub-title {
   margin-right: auto;
   white-space: nowrap;
   background-color: #faebe5;
@@ -190,8 +190,8 @@ nav {
   font-weight: 300;
 }
 
-.title-link {
-  text-decoration: none;
+.sub-title-link {
+ text-decoration: none;
   color: inherit;
   background-color: #faebe5;
   margin-left: 5%;
