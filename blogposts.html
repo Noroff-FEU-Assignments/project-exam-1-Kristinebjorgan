@@ -43,6 +43,7 @@
   <body>
     <!-- HEADER -->
     <header class="subhead">
+      <button class="hamburger">☰</button>
       <a href="index.html" class="title-link">
         <h1 class="title">حكايات من فلسطين</h1>
       </a>
@@ -54,17 +55,16 @@
           >Contact</a
         >
       </nav>
-      <div class="search">
-        <label for="search"></label>
-        <form action="/search" method="get">
-          <input
-            type="text"
-            id="search"
-            placeholder="SEARCH HERE"
-            name="search"
-          />
-        </form>
-      </div>
+      <form action="/search" method="get" class="search">
+        <label for="search" class="search">Search</label>
+        <input
+          type="text"
+          id="search"
+          placeholder="SEARCH HERE"
+          name="search"
+        />
+      </form>
+    </header>
 
     <!-- MAIN -->
     <!-- filter categories-->
