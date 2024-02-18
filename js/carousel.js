@@ -79,12 +79,12 @@ export function carouselNavigation() {
   prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage -= 1;
-      populateCarousel();
+      populateCarousel(perPage, currentPage, "blogCarousel");
     }
   });
 
   nextButton.addEventListener("click", () => {
     currentPage += 1;
-    populateCarousel();
+    populateCarousel(perPage, currentPage, "blogCarousel");
   });
 }
