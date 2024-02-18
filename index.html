@@ -64,10 +64,10 @@
         >
       </nav>
       <form action="/search" method="get" class="search">
-        <label for="search" class="search">Search</label>
+        <label for="search-input" class="visually-hidden">Search</label>
         <input
-          type="text"
-          id="search"
+          type="search"
+          id="search-input"
           placeholder="SEARCH HERE"
           name="search"
         />
@@ -82,7 +82,9 @@
       <button class="carousel-arrow carousel-next">Next</button>
     </div>
 
-    <h3 class="intro" hred="about.html">Get to know us</h3>
+    <a href="about.html" class="intro-link">
+      <h3 class="intro">Get to know us</h3>
+    </a>
     <div id="index-about-content" class="index-about-content"></div>
 
     <div class="index-contact-content">
@@ -138,7 +140,7 @@
 
     <div id="newsletter-signup" class="newsletter">
       <h2>Sign up to our newsletter</h2>
-      <label for="newsletter-email" class="visually-hidden"></label>
+      <label for="newsletter-email" class="visually-hidden">Newsletter</label>
       <input
         type="email"
         id="newsletter-email"

@@ -219,7 +219,7 @@ nav {
 
 .navlink {
   text-transform: uppercase;
-  padding: 10px;
+  padding: 1em;
   letter-spacing: 1px;
   margin-top: 0;
 }
@@ -230,6 +230,7 @@ nav {
   background-color: #7b4959;
   color: #faebe5;
   border-radius: 2px;
+  padding: 0.5em;
 }
 
 .header-img {
@@ -293,48 +294,33 @@ nav {
 }
 
 /* Search bar */
-.subhead form {
-  order: 3;
-  background-color: #faebe5;
-  width: auto;
-  max-width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: baseline;
-  margin: 0 auto;
-}
-
 .search {
   order: 3;
-  background-color: #faebe5;
+  background-color: #7b4959;
   margin-left: auto;
   align-self: center;
   background-color: #faebe5;
-  padding: 2% 2% 0;
+  padding: 1% 1% 0;
 }
 
-.search input[type="text"] {
+/*  search input */
+.search input[type="search"] {
   background-color: #7b4959;
   border: 1px solid #7b4959;
   border-radius: 5px;
   letter-spacing: 3px;
-  padding: 1vwx;
+  padding: 0.5vw; 
   width: 100%;
-  font-size: 1vw;
+  font-size: 0.9vw;
   font-family: "Noto Naskh Arabic", serif;
   box-sizing: border-box;
   text-align: center;
 }
 
-.search input[type="text"]::placeholder {
+.search input[type="search"]::placeholder { 
   color: #ede1dd;
   font-family: "Noto Naskh Arabic", serif;
 }
-
-.search input[type="text"]:after {
-  background-color: #4d2e38;
-}
-
 /* Hamburger */
 .hamburger {
   display: none;
@@ -373,6 +359,7 @@ nav {
   color: #7b4959;
   border: 1px solid #7b4959;
   border-radius: 2px;
+  padding: 0.5em;
 }
 
 .sub-navlink:focus,
@@ -553,6 +540,10 @@ h3 {
   padding-top: 15%;
 }
 
+.intro-link {
+  text-decoration: none;
+}
+
 .index-about-content h1,
 .index-about-content h2,
 .index-about-content p,
@@ -656,6 +647,17 @@ h3 {
   background-color: #4d2e38;
   cursor: pointer;
   transform: scale(1.02);
+}
+
+.visually-hidden {
+ position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /* BLOGPOSTS */
