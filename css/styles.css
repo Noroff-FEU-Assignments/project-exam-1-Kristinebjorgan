@@ -100,7 +100,7 @@ body {
 .maintitle {
   padding: 5%;
   font-size: 100px;
-  color: #e18c68;
+  color: #4d2e38;
 }
 
 .subtitle {
@@ -416,8 +416,9 @@ h3 {
 
 .carousel a:hover,
 .index-about-content a:hover {
-  background-color: #e18c68;
+  background-color: #4d2e38;
   cursor: pointer;
+  transform: scale(1.02);
 }
 
 /* Carousel buttons */
@@ -567,8 +568,9 @@ h3 {
 }
 
 .newsletter button:hover {
-  background-color: #e18c68;
-}
+  background-color: #4d2e38;
+  cursor: pointer;
+  transform: scale(1.02);}
 
 /* FOOTER */
 
@@ -585,7 +587,7 @@ footer {
 
 footer p {
   background-color: #7b4959;
-  color: #e18c68;
+  color: #faebe5;
   text-align: center;
   padding-top: 30px;
 }
