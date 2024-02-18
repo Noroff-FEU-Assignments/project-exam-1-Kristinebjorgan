@@ -53,14 +53,7 @@ export function populateCarousel(
         `;
         carouselContent.appendChild(postElement);
       });
-
-      const totalItems = carouselContent.children.length;
-      for (let i = 0; i < totalItems; i++) {
-        const clone = carouselContent.children[i].cloneNode(true);
-        clone.classList.add("clone");
-        carouselContent.appendChild(clone);
-        carouselContent.insertBefore(clone, carouselContent.firstChild);
-      }
+      // Update the transform based on the current page
       carouselContent.style.transform = `translateX(-${
         (currentPage - 1) * 100
       }%)`;
