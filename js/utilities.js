@@ -4,11 +4,7 @@ export const apiBaseUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/
 
 //Sanitizing
 export function sanitizeHTML(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/'/g, "&#039;");
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 // Sanitizing URLs
