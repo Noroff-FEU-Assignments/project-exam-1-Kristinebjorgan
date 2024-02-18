@@ -1,7 +1,9 @@
+// Imports
 import { truncateText, apiBaseUrl } from "./utilities.js";
 
 let currentPage = 1;
 
+// Carousel
 export function populateCarousel(
   perPage = 4,
   currentPage = 1,
@@ -9,9 +11,9 @@ export function populateCarousel(
 ) {
   if (!Number.isInteger(currentPage) || currentPage < 1) {
     console.error("currentPage must be a positive integer.");
-    return; // Exit the function if currentPage is not valid
+    return;
   }
-  // Use the apiBaseUrl constant to create the fetch URL
+
   const fetchUrl = `${apiBaseUrl}?per_page=${perPage}&page=${currentPage}`;
   fetch(fetchUrl)
     .then((response) => {
@@ -67,7 +69,7 @@ export function populateCarousel(
     });
 }
 
-// Call this function to set up the carousel with event listeners for navigation
+// Eventlisteners for next and prev
 export function carouselNavigation() {
   const carousel = document.getElementById("blogCarousel");
   const prevButton = carousel.querySelector(".carousel-prev");
@@ -81,7 +83,6 @@ export function carouselNavigation() {
   });
 
   nextButton.addEventListener("click", () => {
-    // Assuming there's a way to check if there are more posts; if API provides total pages or posts count
     currentPage += 1;
     populateCarousel();
   });

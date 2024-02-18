@@ -30,13 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
   setupNewsletterForm();
   categoryFilters();
 
-  //modal
+  //Modal
   const modal = document.getElementById("modal");
   if (modal) {
     initModal();
   }
 
-  // Fetch and display about content for the about page, if the container exists
+  //Checking if the container exists before running the code
+
+  // Fetch and display about content for the about page
   const aboutContentContainer = document.getElementById("about-content");
   if (aboutContentContainer) {
     fetchAboutPageContent()
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Initialize category filters if on a page with blog content
+  // Initialize category filters
   if (
     document.getElementById("blog-content") &&
     document.querySelectorAll(".filter-button").length > 0
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     categoryFilters();
   }
 
-  // Fetch and display truncated about content for the index page, if the container exists
+  // Fetch and display truncated about content for the index page
   const indexAboutContentContainer = document.getElementById(
     "index-about-content"
   );
@@ -76,19 +78,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // The carousel should only be populated if the carousel container exists
+  // Populate the carousel
   if (document.getElementById("blogCarousel")) {
     populateCarousel();
     carouselNavigation();
   }
 
-  // Check if the loader exists
+  // Loader
   const loader = document.querySelector(".loader");
   if (loader) {
     loader.style.display = "none";
   }
 
-  // Check if the contact form exists
+  // Contact form
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", function (event) {
@@ -97,13 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Check if the back button exists
-  const backButton = document.getElementById("back");
-  if (backButton) {
-    backButton.addEventListener("click", goBack);
-  }
-
-  // Fetch blogs, about page content, and populate blog post only if they are present on the page
+  // Fetch blogs, about page content, and populate blog post
   if (document.getElementById("blog-content")) {
     fetchBlogs();
     activeViewMoreButton();
@@ -115,23 +111,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// hamburger menu toggle
+// Back button
+const backButton = document.getElementById("back");
+if (backButton) {
+  backButton.addEventListener("click", goBack);
+}
+
+// Hamburger menu toggle
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector(".subhead-nav");
 
-  // Only add the event listener if both elements are present
   if (document.body.contains(hamburger) && document.body.contains(nav)) {
     hamburger.addEventListener("click", function () {
       nav.classList.toggle("open");
     });
   }
 });
-
-// Function to handle going back
-function goBack() {
-  window.history.back();
-}
 
 // Define site name
 const siteName = "Tales of Palestine";
@@ -165,3 +161,8 @@ switch (window.location.pathname) {
 
 // Set the dynamic page title
 document.title = `${siteName} | ${currentPageTitle}`;
+
+// Function to handle going back
+function goBack() {
+  window.history.back();
+}

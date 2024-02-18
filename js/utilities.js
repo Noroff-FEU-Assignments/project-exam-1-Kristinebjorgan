@@ -13,16 +13,11 @@ export function sanitizeHTML(str) {
 
 // Sanitizing URLs
 export function sanitizeURL(url) {
-  try {
-    const urlObj = new URL(url);
-    return urlObj.href;
-  } catch (error) {
-    console.error("Invalid URL provided:", url);
-    return "about:blank";
-  }
+  const urlObj = new URL(url);
+  return urlObj.href;
 }
 
-// Truncate text function (make sure this is correctly implemented)
+// Truncate text function
 export function truncateText(text, length) {
   if (text.length <= length) {
     return text;
@@ -37,13 +32,13 @@ export function blogPostIdFromUrl() {
   return queryParams.get("postId");
 }
 
-// Function to validate email
+// Validate email
 export function validateEmail(email) {
   const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
   return emailRegex.test(email);
 }
 
-//newsletter index
+//Newsletter
 export function setupNewsletterForm() {
   const newsletterSubmitButton = document.getElementById("newsletter-submit");
   if (newsletterSubmitButton) {
@@ -51,7 +46,7 @@ export function setupNewsletterForm() {
       const emailInput = document.getElementById("newsletter-email");
       const messageDiv = document.getElementById("newsletter-message");
 
-      // Validate the email and provide feedback
+      // Validate email + provide feedback
       if (validateEmail(emailInput.value)) {
         messageDiv.textContent = "Thank you for subscribing!";
         messageDiv.style.color = "green";

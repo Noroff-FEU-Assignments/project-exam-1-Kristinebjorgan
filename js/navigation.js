@@ -1,3 +1,4 @@
+//Header on scroll
 export function toggleHeaderOnScroll() {
   window.addEventListener("scroll", function () {
     var mainHead = document.querySelector(".main-head");
@@ -15,19 +16,18 @@ export function toggleHeaderOnScroll() {
   });
 }
 
-//active navlinks
+//Active navlinks
 export function currentNavLink() {
-  let currentPageUrl = window.location.pathname; // Get the full pathname
+  let currentPageUrl = window.location.pathname;
   const navLinks = document.querySelectorAll(".sub-navlink");
 
   navLinks.forEach((link) => {
     const linkUrl = link.getAttribute("href");
-    // Check if the current page URL is equal to the link URL
     if (
-      (currentPageUrl === linkUrl && currentPageUrl !== "/") || // Check for non-homepage links
-      (currentPageUrl === "/" && linkUrl === "/index.html") || // Check for homepage link
+      (currentPageUrl === linkUrl && currentPageUrl !== "/") ||
+      (currentPageUrl === "/" && linkUrl === "/index.html") ||
       (currentPageUrl.endsWith("/") &&
-        currentPageUrl + "index.html" === linkUrl) // Check for homepage with trailing slash
+        currentPageUrl + "index.html" === linkUrl)
     ) {
       link.classList.add("active");
     } else {

@@ -1,24 +1,23 @@
 // Open modal
 export function openModal(post) {
-  console.log("Opening modal for post:", post); // Debugging statement
   const modal = document.getElementById("modal");
-  let modalImgLink = document.getElementById("modalImgLink"); 
+  let modalImgLink = document.getElementById("modalImgLink");
   const modalImg = document.getElementById("modalImg");
   const modalText = document.getElementById("modalText");
   const modalTitle = document.getElementById("modalTitle");
   const modalAuthor = document.getElementById("modalAuthor");
 
-      if (!modalImgLink) {
-        modalImgLink = document.createElement("a");
-        modalImgLink.id = "modalImgLink";
-        modalImg.parentNode.insertBefore(modalImgLink, modalImg); 
-        modalImgLink.appendChild(modalImg); 
-      }
+  if (!modalImgLink) {
+    modalImgLink = document.createElement("a");
+    modalImgLink.id = "modalImgLink";
+    modalImg.parentNode.insertBefore(modalImgLink, modalImg);
+    modalImgLink.appendChild(modalImg);
+  }
 
-      // link to the specific blog post
-      modalImgLink.href = `./blogpost.html?postId=${post.id}`;
+  // link to the specific blog post
+  modalImgLink.href = `./blogpost.html?postId=${post.id}`;
 
-  // Check if the modal and its elements exist
+  // if element exists
   if (modal && modalImg && modalText && modalTitle && modalAuthor) {
     console.log("Modal and its content elements exist.");
     modalImg.src = post.acf.blogpost_image;
@@ -42,7 +41,7 @@ export function closeModal() {
   }
 }
 
-// Initialize modal functionality
+// Initialize modal
 export function initModal() {
   const modal = document.getElementById("modal");
   const closeBtn = document.querySelector(".modal .close");

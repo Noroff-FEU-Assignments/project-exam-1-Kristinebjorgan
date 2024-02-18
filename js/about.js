@@ -1,4 +1,4 @@
-//imports
+//Imports
 import { apiAboutUrl, sanitizeHTML, sanitizeURL } from "./utilities.js";
 
 // About content
@@ -26,7 +26,7 @@ export function displayAboutPageContent(data) {
   const aboutContentElement = document.querySelector(".about-content");
   const linksContainer = document.querySelector(".links-container");
   if (aboutContentElement && linksContainer) {
-    // Check if both containers exist
+    // Check if containers exist
     let aboutContentHTML = "";
     if (data.content && data.content.rendered) {
       aboutContentHTML += sanitizeHTML(data.content.rendered);
@@ -86,7 +86,7 @@ export function displayAboutPageContent(data) {
   }
 }
 
-// clickable links in about
+// Clickable links in about
 export function clickableLinks(email, instagram, donations, linksContainer) {
   if (email) {
     const emailLink = document.createElement("a");
@@ -114,19 +114,18 @@ export function clickableLinks(email, instagram, donations, linksContainer) {
   }
 }
 
-// truncated index version
+// Truncated index version
 export function fetchTruncatedAboutContent() {
-
- return fetch(apiAboutUrl)
-   .then((response) => {
-     if (!response.ok) {
-       throw new Error(`HTTP error! status: ${response.status}`);
-     }
-     return response.json();
-   })
-   .catch((error) => {
-     console.error("Failed to fetch truncated about content:", error);
-   });
+  return fetch(apiAboutUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      console.error("Failed to fetch truncated about content:", error);
+    });
 }
 
 export function displayTruncatedAboutContent(data) {
@@ -171,18 +170,18 @@ export function displayTruncatedAboutContent(data) {
     aboutContentHTML += `<p>${sanitizeHTML(data.acf.mission)}</p>`;
   }
 
-  // Truncate the content
+  // Truncate
   let truncatedContent =
     content.length > maxLength
       ? `<span>${content.substring(0, maxLength)}...</span>`
       : `<span>${content}</span>`;
 
-  // Here's the 'Read More' button as a string of HTML
+  //Read mpre
   const readMoreButton = `<a href="about.html" class="read-more-button">Read more</a>`;
 
-  // Now the button is appended after the truncated content
+  // Append button
   aboutContentHTML += truncatedContent + readMoreButton;
 
-  // Set the content to the container
+  // content to container
   container.innerHTML = aboutContentHTML;
 }

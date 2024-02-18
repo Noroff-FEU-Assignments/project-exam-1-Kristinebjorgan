@@ -22,7 +22,8 @@ let offset = 0;
 // fetch blogposts
 export function fetchBlogs(perPage = 9, offset = 0, categoryId = "") {
   return new Promise((resolve, reject) => {
-    let fetchUrl = `${apiBaseUrl}/?per_page=${perPage}&offset=${offset}`;
+    let fetchUrl = `${apiBaseUrl}?per_page=${perPage}&offset=${offset}`;
+
     if (categoryId) {
       fetchUrl += `&categories=${sanitizeHTML(categoryId.trim())}`;
     }
@@ -222,7 +223,7 @@ export function populateBlogPost() {
     return;
   }
 
-  const fetchUrl = `${apiBaseUrl}${sanitizeURL(postId)}`;
+  const fetchUrl = `${apiBaseUrl}/${postId}`;
 
   fetch(fetchUrl)
     .then((response) => {
@@ -238,7 +239,7 @@ export function populateBlogPost() {
 
       container.innerHTML = "";
 
-      // Dynamically append elements
+      //Append elements
       appendElement(
         container,
         "h1",
@@ -298,7 +299,7 @@ export function populateBlogPost() {
     });
 }
 
-// Append an element to the container
+// Append element the container
 function appendElement(
   container,
   elementType,
@@ -316,7 +317,7 @@ function appendElement(
   container.appendChild(element);
 }
 
-// Append an image to the container
+// Append image to container
 function appendImage(container, className, src, alt) {
   if (!src) return; // Only proceed if 'src' is truthy
   const image = document.createElement("img");

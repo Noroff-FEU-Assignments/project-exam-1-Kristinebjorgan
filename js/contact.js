@@ -1,6 +1,7 @@
+// Imports
 import { validateEmail, sanitizeHTML } from "./utilities.js";
 
-// Function to validate the form on submission
+// Validate form
 export function validateForm(event) {
   event.preventDefault();
 
@@ -40,7 +41,7 @@ export function validateForm(event) {
     isValid = false;
   }
 
-  // Message validation - Note the typo correction from 'lenght' to 'length'
+  // Message validation
   if (message.length < 25) {
     document.getElementById("message-error").textContent =
       "Message should be more than 25 characters long";
