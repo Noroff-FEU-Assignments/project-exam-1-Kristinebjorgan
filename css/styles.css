@@ -316,7 +316,6 @@ nav {
 
 .search input[type="text"]::placeholder {
   color: #ede1dd;
-  opacity: 0.7;
   font-family: "Noto Naskh Arabic", serif;
 }
 
