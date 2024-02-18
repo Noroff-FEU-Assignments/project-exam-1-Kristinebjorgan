@@ -133,14 +133,35 @@ function goBack() {
   window.history.back();
 }
 
-// Get the current page title (e.g., "Home", "About", "Contact", etc.)
-const currentPageTitle = document.title;
-
-// Set the site name
+// Define site name
 const siteName = "Tales of Palestine";
 
-// Concatenate the site name and the current page title with a vertical line separator
-const pageTitle = `${siteName} | ${currentPageTitle}`;
+// Define page titles for each page
+const homePageTitle = "Home";
+const aboutPageTitle = "About Us";
+const contactPageTitle = "Contact Us";
+const blogpostsPageTitle = "Blogposts";
+const specificBlogpostPageTitle = "Specific Blogpost";
+
+// Determine current page title based on the page the user is on
+let currentPageTitle;
+switch (window.location.pathname) {
+  case "/":
+    currentPageTitle = homePageTitle;
+    break;
+  case "/about":
+    currentPageTitle = aboutPageTitle;
+    break;
+  case "/contact":
+    currentPageTitle = contactPageTitle;
+    break;
+  case "/blogposts":
+    currentPageTitle = blogpostsPageTitle;
+    break;
+  // Add other cases for additional pages as needed
+  default:
+    currentPageTitle = siteName; // Fallback to site name for unknown pages
+}
 
 // Set the dynamic page title
-document.title = pageTitle;
+document.title = `${siteName} | ${currentPageTitle}`;
