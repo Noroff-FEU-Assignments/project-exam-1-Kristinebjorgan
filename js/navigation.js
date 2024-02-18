@@ -22,15 +22,13 @@ export function currentNavLink() {
 
   navLinks.forEach((link) => {
     const linkUrl = link.getAttribute("href");
-    // Normalize URLs by removing trailing slashes
-    const normalizedCurrentPageUrl = currentPageUrl.endsWith("/")
-      ? currentPageUrl.slice(0, -1)
-      : currentPageUrl;
-    const normalizedLinkUrl = linkUrl.endsWith("/")
-      ? linkUrl.slice(0, -1)
-      : linkUrl;
-    // Check if the current page URL contains the link URL
-    if (normalizedCurrentPageUrl.includes(normalizedLinkUrl)) {
+    // Check if the current page URL is equal to the link URL
+    if (
+      (currentPageUrl === linkUrl && currentPageUrl !== "/") || // Check for non-homepage links
+      (currentPageUrl === "/" && linkUrl === "/index.html") || // Check for homepage link
+      (currentPageUrl.endsWith("/") &&
+        currentPageUrl + "index.html" === linkUrl) // Check for homepage with trailing slash
+    ) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
