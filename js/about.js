@@ -22,7 +22,6 @@ export function fetchAboutPageContent() {
 }
 
 // Displays page content
-
 export function displayAboutPageContent(data) {
   const aboutContentElement = document.querySelector(".about-content");
   const linksContainer = document.querySelector(".links-container");
@@ -117,17 +116,17 @@ export function clickableLinks(email, instagram, donations, linksContainer) {
 
 // truncated index version
 export function fetchTruncatedAboutContent() {
-  const truncatedApiUrl = `https://talesofpalestine.kristinebjorgan.com/wp-json/wp/v2/pages/45`;
-  return fetch(truncatedApiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.error("Failed to fetch truncated about content:", error);
-    });
+
+ return fetch(apiAboutUrl)
+   .then((response) => {
+     if (!response.ok) {
+       throw new Error(`HTTP error! status: ${response.status}`);
+     }
+     return response.json();
+   })
+   .catch((error) => {
+     console.error("Failed to fetch truncated about content:", error);
+   });
 }
 
 export function displayTruncatedAboutContent(data) {

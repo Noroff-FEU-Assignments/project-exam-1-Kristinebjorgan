@@ -1,12 +1,20 @@
 // IMPORTS
 import {
+  blogPostIdFromUrl,
+  setupNewsletterForm,
+  apiAboutUrl,
+  apiBaseUrl,
+} from "./utilities.js";
+import { toggleHeaderOnScroll, currentNavLink } from "./navigation.js";
+import { validateForm } from "./contact.js";
+import { initModal } from "./modal.js";
+import { populateCarousel, carouselNavigation } from "./carousel.js";
+import {
   fetchBlogs,
   activeViewMoreButton,
   populateBlogPost,
   categoryFilters,
 } from "./blogposts.js";
-import { toggleHeaderOnScroll, currentNavLink } from "./navigation.js";
-import { validateForm } from "./contact.js";
 import {
   fetchAboutPageContent,
   displayAboutPageContent,
@@ -14,13 +22,6 @@ import {
   fetchTruncatedAboutContent,
   displayTruncatedAboutContent,
 } from "./about.js";
-import { initModal } from "./modal.js";
-import { populateCarousel, carouselNavigation } from "./carousel.js";
-import {
-  validateEmail,
-  blogPostIdFromUrl,
-  setupNewsletterForm,
-} from "./utilities.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   toggleHeaderOnScroll();
@@ -29,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
   setupNewsletterForm();
   categoryFilters();
 
-  //if modal
-   const modal = document.getElementById("modal");
-   if (modal) {
-     initModal();
-   }
+  //modal
+  const modal = document.getElementById("modal");
+  if (modal) {
+    initModal();
+  }
 
-  // Fetch and display full about content for the about page, if the container exists
+  // Fetch and display about content for the about page, if the container exists
   const aboutContentContainer = document.getElementById("about-content");
   if (aboutContentContainer) {
     fetchAboutPageContent()
@@ -46,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Failed to fetch full about content:", error);
+        aboutContentContainer.textContent =
+          "Sorry, we’re unable to load the content right now. Please try again later.";
       });
   }
 
@@ -112,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-//hamburger menu toggle
+// hamburger menu toggle
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector(".subhead-nav");
@@ -122,10 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburger.addEventListener("click", function () {
       nav.classList.toggle("open");
     });
-  } else {
-    console.info(
-      "Hamburger menu or navigation elements are not present on this page."
-    );
   }
 });
 

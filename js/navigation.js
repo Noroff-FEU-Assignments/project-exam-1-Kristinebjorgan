@@ -21,7 +21,6 @@ export function currentNavLink() {
   const navLinks = document.querySelectorAll(".sub-navlink");
 
   navLinks.forEach((link) => {
-    console.log(link.getAttribute("href"), currentPageUrl);
 
     if (link.getAttribute("href") === currentPageUrl) {
       link.classList.add("active");

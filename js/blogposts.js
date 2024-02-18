@@ -52,10 +52,10 @@ export function fetchBlogs(perPage = 9, offset = 0, categoryId = "") {
 
           postElement.dataset.postData = JSON.stringify({
             acf: {
-              blogpost_image: sanitizeURL(post.acf.blogpost_image),
-              blogpost_poem: sanitizeHTML(post.acf.blogpost_poem),
-              artwork_title: sanitizeHTML(post.acf.artwork_title),
-              blogpost_author: sanitizeHTML(post.acf.blogpost_author),
+              blogpost_image: post.acf.blogpost_image,
+              blogpost_poem: post.acf.blogpost_poem,
+              artwork_title: post.acf.artwork_title,
+              blogpost_author: post.acf.blogpost_author,
             },
             id: post.id,
           });
