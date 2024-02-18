@@ -132,3 +132,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function goBack() {
   window.history.back();
 }
+
+// Get the current page title (e.g., "Home", "About", "Contact", etc.)
+const currentPageTitle = document.title;
+
+// Set the site name
+const siteName = "Tales of Palestine";
+
+// Concatenate the site name and the current page title with a vertical line separator
+const pageTitle = `${siteName} | ${currentPageTitle}`;
+
+// Set the dynamic page title
+document.title = pageTitle;
