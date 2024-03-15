@@ -1,5 +1,7 @@
 # Tales of Palestine: Resilience in Art
 
+![Tales of Palestine](images/MOSQUE2.png)
+
 ## Description
 This project is a blog that celebrates Palestinian poetry and art, showcasing resilience in the face of adversity. It's not just a blog; it's a tribute to the enduring spirit of Palestine, its culture, and its people. The platform presents a curated collection of poetic verses, artworks, and stories that reflect the struggle, beauty, and indomitable spirit of the Palestinian people.
 
